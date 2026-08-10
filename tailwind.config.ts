@@ -2,8 +2,8 @@ export default {
     theme: {
       extend: {
         fontFamily: {
-            heading: ['Great Vibes', 'serif'],
-            second: ['Koh Santepheap', 'serif'],
+            heading: ["Bodoni Moda", 'serif'],
+            second: ["Montserrat", 'sans-serif'],
             body: ['Montserrat', 'sans-serif'],
         }
       }
