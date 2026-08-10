@@ -10,7 +10,7 @@
       <div>
         <p class="font-second text-xl">The Wedding Of</p>
         <h1 class="text-5xl font-heading font-bold tracking-wide mt-5">
-          Desti & Reza
+          Sintia & Anto
         </h1>
       </div>
       <div>
