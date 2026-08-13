@@ -1,27 +1,73 @@
 <template>
-  <section class="relative h-screen w-full overflow-hidden bg-[url('/images/7.webp')] bg-cover custom-position">
-    <!-- overlay gelap tipis -->
-    <div class="absolute inset-0 bg-gradient-to-b from-black/10 to-red-950 z-0"></div>
+  <section class="relative h-screen w-full overflow-hidden bg-cover bg-no-repeat bg-[60%_10%]"
+    style="background-image: url('/images/k.webp')">
+    <!-- Soft dark overlay -->
+    <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/5 via-black/15 to-[#403c32]/85"></div>
 
-    <div class="relative grid place-content-between justify-center h-full text-center px-4 py-20">
-      <div>
-        <p class="font-second text-xl">The Wedding Of</p>
-        <h1 class="font-heading text-5xl font-semibold sm:text-6xl mt-5">Desti & Reza</h1>
-        <p class="font-second text-base sm:text-lg">Sabtu, 26 Juli 2025</p>
+    <!-- Warm glow -->
+    <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,252,243,0.22),transparent_55%)]">
+    </div>
+
+    <!-- Content -->
+    <div
+      class="relative z-10 mx-auto flex h-full w-full max-w-lg flex-col items-center justify-between px-5 py-16 text-center text-[#f8f5ee] md:py-20">
+      <!-- Wedding info -->
+      <div class="flex w-full flex-col items-center">
+        <p class="font-second text-xs uppercase tracking-[0.35em] text-[#f1eadf] sm:text-sm md:text-base">
+          The Wedding Of
+        </p>
+
+        <h1
+          class="mt-4 font-heading text-5xl font-normal italic leading-none tracking-wide text-[#fffdf8] drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)] sm:text-6xl md:text-7xl">
+          Okta
+          <span class="mx-1 text-[#e8decb]">&</span>
+          Anto
+        </h1>
+
+        <!-- Ornament -->
+        <div class="mt-4 flex items-center gap-3 text-[#eee5d5]">
+          <span class="h-px w-12 bg-[#eee5d5]/70 sm:w-16"></span>
+
+          <span class="text-xs">✦</span>
+
+          <span class="h-px w-12 bg-[#eee5d5]/70 sm:w-16"></span>
+        </div>
+
+        <p class="mt-4 font-second text-sm tracking-wide text-[#f1eadf] sm:text-base md:text-lg">
+          Kamis, 17 September 2026
+        </p>
       </div>
-      <div>
-        <p class="font-heading text-3xl mb-3">Countdown Timer</p>
-        <div class="flex space-x-2 sm:space-x-4 font-second justify-center">
-          <div v-for="(item, i) in countdownItems" :key="i" class="flex flex-col items-center">
-            <div class="font-bold bg-red-50 text-red-950 rounded-full px-4 py-2 text-md">
-              {{ item.value }}
+
+      <!-- Countdown -->
+      <div
+        class="flex w-full max-w-sm flex-col items-center rounded-[2rem] border border-white/20 bg-black/10 px-4 py-6 backdrop-blur-[5px] sm:px-6 sm:py-7">
+        <p class="font-second text-xs uppercase tracking-[0.3em] text-[#f1eadf]/90 sm:text-sm">
+          Counting Down
+        </p>
+
+        <!-- Decorative ornament -->
+        <div class="my-3 flex items-center gap-3 opacity-70">
+          <span class="h-px w-8 bg-[#eee5d5]"></span>
+          <span class="text-[10px] text-[#eee5d5]">✦</span>
+          <span class="h-px w-8 bg-[#eee5d5]"></span>
+        </div>
+
+        <!-- Countdown -->
+        <div class="flex items-center justify-center gap-2 sm:gap-3 md:gap-4">
+          <div v-for="(item, i) in countdownItems" :key="i"
+            class="flex min-w-[58px] flex-col items-center sm:min-w-[68px]">
+            <div
+              class="flex size-12 items-center justify-center rounded-full border border-[#eee5d5]/60 bg-[#f5f0e7]/90 font-heading text-lg font-semibold text-[#4b483f] shadow-lg shadow-black/10 sm:size-14 sm:text-xl">
+              {{ String(item.value).padStart(2, '0') }}
             </div>
-            <div class="mt-1 text-xs sm:text-sm">{{ item.label }}</div>
+
+            <span class="mt-2 font-second text-[10px] uppercase tracking-[0.18em] text-[#f1eadf]/90 sm:text-xs">
+              {{ item.label }}
+            </span>
           </div>
         </div>
       </div>
     </div>
-
   </section>
 </template>
 
@@ -29,15 +75,29 @@
 import { ref, onMounted, onUnmounted, computed } from 'vue'
 
 const target = new Date('2026-09-17T08:00:00+07:00').getTime()
-const days = ref(0), hours = ref(0), minutes = ref(0), seconds = ref(0)
+
+const days = ref(0)
+const hours = ref(0)
+const minutes = ref(0)
+const seconds = ref(0)
+
 let timer
 
 function update() {
   const diff = target - Date.now()
-  days.value = Math.max(Math.floor(diff / (1000 * 60 * 60 * 24)), 0)
-  hours.value = Math.max(Math.floor((diff / (1000 * 60 * 60)) % 24), 0)
-  minutes.value = Math.max(Math.floor((diff / (1000 * 60)) % 60), 0)
-  seconds.value = Math.max(Math.floor((diff / 1000) % 60), 0)
+
+  if (diff <= 0) {
+    days.value = 0
+    hours.value = 0
+    minutes.value = 0
+    seconds.value = 0
+    return
+  }
+
+  days.value = Math.floor(diff / (1000 * 60 * 60 * 24))
+  hours.value = Math.floor((diff / (1000 * 60 * 60)) % 24)
+  minutes.value = Math.floor((diff / (1000 * 60)) % 60)
+  seconds.value = Math.floor((diff / 1000) % 60)
 }
 
 const countdownItems = computed(() => [
@@ -51,11 +111,8 @@ onMounted(() => {
   update()
   timer = setInterval(update, 1000)
 })
-onUnmounted(() => clearInterval(timer))
-</script>
 
-<style scoped>
-.custom-position {
-  background-position: 37% 50%;
-}
-</style>
+onUnmounted(() => {
+  clearInterval(timer)
+})
+</script>
