@@ -1,27 +1,71 @@
 <template>
-  <section id="love-story" class="py-20 font-[Inter,sans-serif] text-red-50">
-    <div class="max-w-3xl mx-auto px-4">
-      <h2
-        class="text-4xl font-bold font-heading text-center tracking-wide mb-12 text-red-100 border-b border-rose-500 pb-2">
-        Love Story
-      </h2>
-      <div class="relative border-l-2 border-gradient-to-b pl-6 space-y-10">
-        <div v-for="(event, idx) in timeline" :key="idx" data-aos="fade-up" class="relative group">
-          <!-- Timeline dot -->
-          <div
-            class="absolute -left-4 top-0 w-8 h-8 bg-gradient-to-tr from-rose-400 to-pink-300 border-[3px] border-white rounded-full flex items-center justify-center shadow-lg ring-2 ring-rose-200/30 group-hover:scale-110 transition-all duration-300 overflow-hidden z-10">
-            <img :src="event.icon" alt="Icon" class="w-4 h-4 object-contain" />
-          </div>
+  <section id="love-story" class="relative overflow-hidden bg-[#eee9df] px-6 py-20 text-[#4b483f]">
+    <!-- Soft decorative glow -->
+    <div
+      class="pointer-events-none absolute right-0 top-20 h-72 w-72 translate-x-1/3 rounded-full bg-[#e8decb]/20 blur-3xl">
+    </div>
 
-          <!-- Content -->
-          <div
-            class="bg-red-900/30 backdrop-blur-sm border border-rose-400/30 rounded-xl p-5 shadow-md hover:shadow-pink-500/30 transition duration-300">
-            <p class="text-xs text-rose-300 font-semibold uppercase tracking-wide">
-              {{ event.date }}
-            </p>
-            <p class="text-red-50 font-body text-base mt-2 leading-relaxed">
-              {{ event.description }}
-            </p>
+    <div class="relative mx-auto max-w-3xl">
+      <!-- Header -->
+      <div class="mb-14 text-center">
+        <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172] sm:text-sm">
+          Our Journey
+        </p>
+
+        <h2 class="mt-3 font-heading text-4xl font-normal italic tracking-wide text-[#514d44] sm:text-5xl">
+          Love Story
+        </h2>
+
+        <!-- Ornament -->
+        <div class="mt-5 flex items-center justify-center gap-3 text-[#b8aa92]">
+          <span class="h-px w-12 bg-[#cfc4b1]"></span>
+          <span class="text-xs">✦</span>
+          <span class="h-px w-12 bg-[#cfc4b1]"></span>
+        </div>
+
+        <p class="mx-auto mt-5 max-w-xl font-second text-sm leading-7 text-[#746d62] sm:text-base">
+          Setiap perjalanan memiliki cerita. Inilah beberapa kisah yang
+          mengantarkan kami hingga sampai pada hari bahagia ini.
+        </p>
+      </div>
+
+      <!-- Timeline -->
+      <div class="relative">
+        <!-- Timeline line -->
+        <div
+          class="absolute left-4 top-0 h-full w-px bg-gradient-to-b from-[#d8cdbb] via-[#b8aa92] to-[#d8cdbb] sm:left-5">
+        </div>
+
+        <div class="space-y-8 sm:space-y-10">
+          <div v-for="(event, idx) in timeline" :key="idx" data-aos="fade-up" class="group relative pl-12 sm:pl-14">
+            <!-- Timeline icon -->
+            <div
+              class="absolute left-0 top-1 z-10 flex size-8 items-center justify-center rounded-full border-2 border-[#f8f5ee] bg-[#e8decb] shadow-[0_4px_12px_rgba(75,72,63,0.12)] transition duration-300 group-hover:scale-110 sm:left-1 sm:size-9">
+              <img :src="event.icon" :alt="`Icon ${event.date}`"
+                class="size-4 object-contain opacity-75 sm:size-[18px]" />
+            </div>
+
+            <!-- Story card -->
+            <article
+              class="rounded-[1.5rem] border border-[#d8cdbb] bg-[#f5f0e7]/75 p-5 shadow-[0_10px_30px_rgba(75,72,63,0.06)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_35px_rgba(75,72,63,0.10)] sm:p-6">
+              <!-- Year + date -->
+              <div class="flex items-center gap-3">
+                <span class="font-heading text-md font-normal italic leading-none text-[#9b907f] sm:text-3xl">
+                  {{ event.year }}
+                </span>
+
+                <span class="h-px w-8 bg-[#cfc4b1]"></span>
+
+                <p class="font-second text-xs font-semibold uppercase tracking-[0.18em] text-[#817769] sm:text-sm">
+                  {{ event.title }}
+                </p>
+              </div>
+
+              <!-- Description -->
+              <p class="mt-4 font-second text-sm leading-7 text-[#625c52] sm:text-[15px] sm:leading-8">
+                {{ event.description }}
+              </p>
+            </article>
           </div>
         </div>
       </div>
@@ -29,44 +73,47 @@
   </section>
 </template>
 
-
 <script setup>
 import { ref, onMounted } from 'vue'
 import AOS from 'aos'
 import 'aos/dist/aos.css'
 
 onMounted(() => {
-  AOS.init({ duration: 800, once: true })
+  AOS.init({
+    duration: 800,
+    once: true,
+    offset: 80,
+  })
 })
 
 const timeline = ref([
   {
-    date: 'Pertemuan',
-    description: 'Tidak ada yang kebetulan di dunia ini. Semua sudah mempunyai porsi masing2 dan telah disusun rapi oleh sang maha kuasa. Pertemuan kami bermula dari tempat kerja sebuah restoran di kota teh obeng (batam), akhir tahun 2021.',
-    icon: '/icons/icon1.png'
+    year: '2023',
+    title: 'Pertemuan',
+    description:
+      'Berawal dari perkenalan singkat melalui media sosial TikTok pada tahun 2023, kami memutuskan untuk bertemu secara langsung. Siapa sangka, pertemuan sederhana di Kedai Baper, Singkut, menjadi awal dari kisah cinta kami.',
+    icon: '/icons/user-heart.svg',
   },
   {
-    date: 'Pendekatan',
-    description: 'Katanya cinta dapat tumbuh dengan kebersamaan, seiring berjalannya waktu kami semakin dekat walau tidak ada kata pacaran dan terus berlanjut.',
-    icon: '/icons/icon2.png'
+    year: '2024',
+    title: 'Menjalin Hubungan',
+    description:
+      'Perjalanan cinta kami bukanlah tanpa ujian. Bukan hanya dipenuhi kebahagiaan, tetapi juga air mata, keraguan, dan waktu yang menguji keyakinan. Bahkan, sempat terlintas keinginan untuk menyerah. Entah sudah berapa kali kami saling memaafkan, namun cinta selalu menemukan jalan untuk menguatkan dan membuat kami tetap bertahan.',
+    icon: '/icons/chart-circles.svg',
   },
   {
-    date: 'Tunangan',
-    description: 'Hingga akhirnya di tahun ke-3 (awal tahun 2024) kami memutuskan untuk cuti bersama ke kampung halamanku dan mengenal lebih dekat keluarga besar kami berdua. Di ikat dengan sebuah cincin, kami dan keluarga meresmikan hubungan dengan tujuan ke jenjang yang lebih serius.',
-    icon: '/icons/icon3.png'
+    year: '2026',
+    title: 'Lamaran',
+    description:
+      'Setelah menjalani hubungan yang tidak sebentar, atas kehendak-Nya serta restu dari orang tua dan keluarga, kami melangsungkan lamaran pada 8 Juli 2026. Sebuah langkah kecil yang menjadi awal menuju perjalanan yang lebih serius.',
+    icon: '/icons/rings.svg',
   },
   {
-    date: 'Pernikahan',
-    description: 'Alhamdulillah tidak ada usaha yang mengkhianati hasil, dengan penuh perjuangan di tanah perantauan kami mengusahakan untuk bisa mengikrarkan janji suci pernikahan di tahun ini.',
-    icon: '/icons/icon4.png'
-  }
+    year: '2026',
+    title: 'Menikah',
+    description:
+      'Percayalah, bukan karena bertemu lalu berjodoh, tetapi karena berjodoh-lah kami dipertemukan. Setelah melalui begitu banyak cerita, tawa, air mata, dan perjuangan, kini kami memilih untuk melangkah bersama, mengikat janji suci dalam sebuah pernikahan. Semoga perjalanan ini menjadi awal dari kisah yang akan kami tuliskan bersama, selamanya.',
+    icon: '/icons/heart-light.svg',
+  },
 ])
 </script>
-
-<style scoped>
-.border-gradient-to-b {
-  border-image: linear-gradient(to bottom, #fb7185, #fecdd3);
-  /* rose to soft pink */
-  border-image-slice: 1;
-}
-</style>

@@ -67,7 +67,7 @@
             <div class="hidden items-center gap-3 md:flex">
               <span class="h-px w-12 bg-[#cfc4b1]"></span>
 
-              <img src="/icons/ring.png" alt="Cincin pernikahan" class="h-9 w-9 opacity-75" />
+              <img src="/icons/heart-light.svg" alt="Cincin pernikahan" class="h-9 w-9 opacity-75" />
 
               <span class="h-px w-12 bg-[#cfc4b1]"></span>
             </div>
@@ -76,7 +76,7 @@
             <div class="flex flex-col items-center gap-2 md:hidden">
               <span class="h-8 w-px bg-[#cfc4b1]"></span>
 
-              <img src="/icons/ring.png" alt="Cincin pernikahan" class="h-8 w-8 opacity-75" />
+              <img src="/icons/heart-light.svg" alt="Cincin pernikahan" class="h-8 w-8 opacity-75" />
 
               <span class="h-8 w-px bg-[#cfc4b1]"></span>
             </div>
@@ -87,7 +87,7 @@
             <div class="group mx-auto w-fit">
               <div class="rounded-full border border-[#d8cdbb] bg-[#f8f5ee] p-2 shadow-sm">
                 <img src="/images/pria.webp" alt="Slamet gianto"
-                  class="h-52 w-52 rounded-full object-cover object-[center_35%] transition duration-500 group-hover:scale-[1.02] sm:h-60 sm:w-60 md:h-64 md:w-64" />
+                  class="h-52 w-52 rounded-full object-cover object-[center_25%] transition duration-500 group-hover:scale-[1.02] sm:h-60 sm:w-60 md:h-64 md:w-64" />
               </div>
             </div>
 
