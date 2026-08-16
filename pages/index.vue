@@ -41,7 +41,7 @@ useSeoMeta({
   ogTitle: 'Okta & Anto — Undangan Pernikahan',
   ogDescription:
     'Kami mengundang Anda untuk hadir di hari bahagia Okta & Anto.',
-  ogImage: 'https://undangy-okta-anto.vercel.app/images/1.jpg',
+  ogImage: 'https://undangy-okta-anto.vercel.app/images/1.webp',
   ogImageWidth: '1200',
   ogImageHeight: '630',
   ogUrl: 'https://undangy-okta-anto.vercel.app',
