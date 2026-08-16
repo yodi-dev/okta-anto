@@ -92,7 +92,7 @@
             </div>
 
             <h3 class="mt-6 font-heading text-3xl font-normal italic text-[#514d44]">
-              Slamet gianto
+              Slamet Gianto
             </h3>
 
             <div class="mx-auto my-3 flex items-center justify-center gap-2">
