@@ -114,9 +114,9 @@
               <div
                 class="h-full min-h-[280px] overflow-hidden rounded-[1.5rem] border border-[#d8cdbb] bg-[#eee9df] shadow-sm">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d996.4590853984532!2d102.72831621376793!3d-2.560039497437475!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e31cdee3bd595fb%3A0xf50fd31a2bd22f8d!2sSimpang%20Nibung%2C%20Singkut%2C%20Sarolangun%20Regency%2C%20Jambi!5e0!3m2!1sen!2sid!4v1786887954682!5m2!1sen!2sid"
+                  src="https://www.google.com/maps/embed?pb=!4v1786888258090!6m8!1m7!1slZ35-dLq_9gjM15PsgPz_w!2m2!1d-2.559985239463272!2d102.7290296496855!3f159.62228!4f0!5f0.7820865974627469"
                   title="Lokasi acara pernikahan" class="h-full min-h-[280px] w-full" style="border: 0" loading="lazy"
-                  referrerpolicy="no-referrer-when-downgrade"></iframe>
+                  referrerpolicy="strict-origin-when-cross-origin"></iframe>
               </div>
             </div>
           </div>
