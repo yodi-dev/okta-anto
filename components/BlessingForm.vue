@@ -194,7 +194,7 @@ const showToast = (message) => {
 }
 
 async function submitForm() {
-  const { error } = await supabase.from('guestbook').insert([
+  const { error } = await supabase.from('guestsokta').insert([
     {
       name: form.value.name,
       attending: form.value.attending,
@@ -222,7 +222,7 @@ async function submitForm() {
 
 async function fetchEntries() {
   const { data, error } = await supabase
-    .from('guestbook')
+    .from('guestsokta')
     .select('*')
     .order('created_at', { ascending: false })
 
