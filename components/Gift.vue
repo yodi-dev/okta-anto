@@ -1,13 +1,13 @@
 <template>
-  <section id="gift" class="relative overflow-hidden bg-[#f5f0e7] px-6 py-20 text-[#4b483f]">
+  <section ref="giftRef" id="gift" class="relative overflow-hidden bg-[#f5f0e7] px-6 py-20 text-[#4b483f]">
     <!-- Soft decorative glow -->
     <div
-      class="pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#e8decb]/25 blur-3xl">
+      class="animate-soft-float pointer-events-none absolute left-1/2 top-0 h-72 w-72 -translate-x-1/2 rounded-full bg-[#e8decb]/25 blur-3xl">
     </div>
 
     <div class="relative mx-auto max-w-2xl">
       <!-- Header -->
-      <div class="text-center">
+      <div class="text-center reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172] sm:text-sm">
           A Little Gift
         </p>
@@ -19,7 +19,9 @@
         <!-- Ornament -->
         <div class="mt-5 flex items-center justify-center gap-3 text-[#b8aa92]">
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
-          <span class="text-xs">✦</span>
+
+          <span class="animate-sparkle text-xs">✦</span>
+
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
         </div>
 
@@ -32,10 +34,13 @@
 
       <!-- Bank Cards -->
       <div class="mt-10 space-y-5">
-        <article v-for="(bank, idx) in banks" :key="idx"
-          class="relative overflow-hidden rounded-[1.75rem] border border-[#d8cdbb] bg-[#eee9df]/80 p-6 shadow-[0_14px_40px_rgba(75,72,63,0.07)] backdrop-blur-sm sm:p-7">
+        <article v-for="(bank, idx) in banks" :key="bank.account"
+          class="relative overflow-hidden rounded-[1.75rem] border border-[#d8cdbb] bg-[#eee9df]/80 p-6 shadow-[0_14px_40px_rgba(75,72,63,0.07)] backdrop-blur-sm reveal-up sm:p-7"
+          :style="{ animationDelay: `${220 + idx * 160}ms` }">
           <!-- Decorative circle -->
-          <div class="pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-[#e8decb]/60"></div>
+          <div
+            class="animate-soft-float pointer-events-none absolute -right-10 -top-10 size-32 rounded-full bg-[#e8decb]/60"
+            :style="{ animationDelay: `${idx * 700}ms` }"></div>
 
           <div class="relative z-10">
             <!-- Bank -->
@@ -74,7 +79,8 @@
             <!-- Copy Button -->
             <button @click="copyToClipboard(bank.account)"
               class="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#b8aa92] bg-[#e8decb]/50 px-5 py-2.5 font-second text-sm font-semibold text-[#514d44] shadow-sm transition duration-300 hover:bg-[#e8decb] active:scale-[0.98]">
-              <img src="/icons/copy-light.svg" alt="" class="size-4 opacity-75" />
+              <img src="/icons/copy-light.svg" alt=""
+                class="size-4 opacity-75 transition-transform duration-300 group-hover:scale-105" />
 
               <span>Salin Nomor Rekening</span>
             </button>
@@ -83,9 +89,11 @@
       </div>
 
       <!-- Bottom ornament -->
-      <div class="mt-10 flex items-center justify-center gap-3 text-[#b8aa92]">
+      <div class="mt-10 flex items-center justify-center gap-3 text-[#b8aa92] reveal-up" style="animation-delay: 520ms">
         <span class="h-px w-10 bg-[#cfc4b1]"></span>
-        <span class="text-[10px]">❧</span>
+
+        <span class="animate-sparkle text-[10px]">❧</span>
+
         <span class="h-px w-10 bg-[#cfc4b1]"></span>
       </div>
     </div>
@@ -102,6 +110,14 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
+
+const giftRef = ref(null)
+
+useRevealOnScroll(giftRef, {
+  threshold: 0.1,
+  once: true,
+})
 
 const banks = ref([
   {

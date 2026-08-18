@@ -1,18 +1,19 @@
 <template>
-  <section class="relative h-screen w-full overflow-hidden bg-cover bg-no-repeat bg-[60%_10%]"
+  <section ref="countdownRef" class="relative h-screen w-full overflow-hidden bg-cover bg-no-repeat bg-[60%_10%]"
     style="background-image: url('/images/2.webp')">
     <!-- Soft dark overlay -->
     <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/5 via-black/15 to-[#403c32]/85"></div>
 
     <!-- Warm glow -->
-    <div class="absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,252,243,0.22),transparent_55%)]">
+    <div
+      class="animate-soft-float pointer-events-none absolute inset-0 z-0 bg-[radial-gradient(circle_at_50%_35%,rgba(255,252,243,0.22),transparent_55%)]">
     </div>
 
     <!-- Content -->
     <div
       class="relative z-10 mx-auto flex h-full w-full max-w-lg flex-col items-center justify-between px-5 py-16 text-center text-[#f8f5ee] md:py-20">
       <!-- Wedding info -->
-      <div class="flex w-full flex-col items-center">
+      <div class="flex w-full flex-col items-center reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.35em] text-[#f1eadf] sm:text-sm md:text-base">
           The Wedding Of
         </p>
@@ -28,7 +29,7 @@
         <div class="mt-4 flex items-center gap-3 text-[#eee5d5]">
           <span class="h-px w-12 bg-[#eee5d5]/70 sm:w-16"></span>
 
-          <span class="text-xs">✦</span>
+          <span class="animate-sparkle text-xs">✦</span>
 
           <span class="h-px w-12 bg-[#eee5d5]/70 sm:w-16"></span>
         </div>
@@ -40,7 +41,8 @@
 
       <!-- Countdown -->
       <div
-        class="flex w-full max-w-sm flex-col items-center rounded-[2rem] border border-white/20 bg-black/10 px-4 py-6 backdrop-blur-[5px] sm:px-6 sm:py-7">
+        class="flex w-full max-w-sm flex-col items-center rounded-[2rem] border border-white/20 bg-black/10 px-4 py-6 backdrop-blur-[5px] reveal-up sm:px-6 sm:py-7"
+        style="animation-delay: 220ms">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#f1eadf]/90 sm:text-sm">
           Counting Down
         </p>
@@ -48,7 +50,11 @@
         <!-- Decorative ornament -->
         <div class="my-3 flex items-center gap-3 opacity-70">
           <span class="h-px w-8 bg-[#eee5d5]"></span>
-          <span class="text-[10px] text-[#eee5d5]">✦</span>
+
+          <span class="animate-sparkle text-[10px] text-[#eee5d5]">
+            ✦
+          </span>
+
           <span class="h-px w-8 bg-[#eee5d5]"></span>
         </div>
 
@@ -73,6 +79,14 @@
 
 <script setup>
 import { ref, onMounted, onUnmounted, computed } from 'vue'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
+
+const countdownRef = ref(null)
+
+useRevealOnScroll(countdownRef, {
+  threshold: 0.1,
+  once: true,
+})
 
 const target = new Date('2026-09-17T08:00:00+07:00').getTime()
 

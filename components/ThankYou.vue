@@ -1,13 +1,14 @@
 <template>
-  <section id="closing" class="relative overflow-hidden bg-[#e8decb] px-6 py-20 text-center text-[#4b483f]">
+  <section ref="closingRef" id="closing"
+    class="relative overflow-hidden bg-[#e8decb] px-6 py-20 text-center text-[#4b483f]">
     <!-- Soft glow -->
     <div
-      class="pointer-events-none absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-[#fffdf8]/30 blur-3xl">
+      class="animate-soft-float pointer-events-none absolute left-1/2 top-0 h-80 w-80 -translate-x-1/2 rounded-full bg-[#fffdf8]/30 blur-3xl">
     </div>
 
     <div class="relative mx-auto max-w-2xl">
       <!-- Closing message -->
-      <div>
+      <div class="reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#817769] sm:text-sm">
           With Love
         </p>
@@ -19,7 +20,9 @@
         <!-- Ornament -->
         <div class="mt-5 flex items-center justify-center gap-3 text-[#a99a82]">
           <span class="h-px w-12 bg-[#c7baa5]"></span>
-          <span class="text-xs">✦</span>
+
+          <span class="animate-sparkle text-xs">✦</span>
+
           <span class="h-px w-12 bg-[#c7baa5]"></span>
         </div>
 
@@ -31,15 +34,17 @@
       </div>
 
       <!-- Couple photo -->
-      <div class="mx-auto mt-10 max-w-md">
-        <div class="rounded-[2rem] border border-[#cfc4b1] bg-[#f8f5ee] p-2 shadow-[0_20px_50px_rgba(75,72,63,0.12)]">
-          <img src="/images/3.webp" alt="Foto Okta dan Anto" class="w-full rounded-[1.5rem] object-cover"
+      <div class="mx-auto mt-10 max-w-md reveal-up" style="animation-delay: 220ms">
+        <div
+          class="group rounded-[2rem] border border-[#cfc4b1] bg-[#f8f5ee] p-2 shadow-[0_20px_50px_rgba(75,72,63,0.12)]">
+          <img src="/images/3.webp" alt="Foto Okta dan Anto"
+            class="w-full rounded-[1.5rem] object-cover transition duration-[1200ms] ease-out group-hover:scale-[1.02]"
             loading="lazy" />
         </div>
       </div>
 
       <!-- Couple names -->
-      <div class="mt-8">
+      <div class="mt-8 reveal-up" style="animation-delay: 420ms">
         <p class="font-second text-[10px] uppercase tracking-[0.3em] text-[#8f806b] sm:text-xs">
           Kami yang berbahagia
         </p>
@@ -50,10 +55,11 @@
       </div>
 
       <!-- Footer -->
-      <footer class="mt-14 border-t border-[#cfc4b1]/70 pt-7 font-second text-[11px] leading-6 text-[#817769]">
+      <footer class="mt-14 border-t border-[#cfc4b1]/70 pt-7 font-second text-[11px] leading-6 text-[#817769] reveal-up"
+        style="animation-delay: 600ms">
         <!-- Music attribution -->
         <p class="italic">
-          Musik: "You'll Be in My Heart" - Niki.
+          Musik: "You'll Be in My Heart" — NIKI.
         </p>
 
         <!-- Icon attribution -->
@@ -62,7 +68,8 @@
           <a href="https://www.freepik.com" target="_blank" rel="noopener noreferrer"
             class="underline underline-offset-2 transition hover:text-[#4b483f]">
             Freepik
-          </a> &
+          </a>
+          &
           <a href="https://phosphoricons.com/" target="_blank" rel="noopener noreferrer"
             class="underline underline-offset-2 transition hover:text-[#4b483f]">
             Phosphor
@@ -83,3 +90,15 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
+
+const closingRef = ref(null)
+
+useRevealOnScroll(closingRef, {
+  threshold: 0.1,
+  once: true,
+})
+</script>

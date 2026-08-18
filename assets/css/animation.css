@@ -1,0 +1,140 @@
+@keyframes reveal-up {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes reveal-left {
+    from {
+        opacity: 0;
+        transform: translateX(-24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes reveal-right {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes reveal-fade {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes soft-float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-6px);
+    }
+}
+
+@keyframes soft-scale {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.02);
+    }
+}
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+        opacity: 0.5;
+        transform: scale(0.9);
+    }
+
+    50% {
+        opacity: 1;
+        transform: scale(1.1);
+    }
+}
+
+.reveal-up {
+    opacity: 0;
+    transform: translateY(24px);
+}
+
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-24px);
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(24px);
+}
+
+.reveal-up,
+.reveal-left,
+.reveal-right {
+    will-change: transform, opacity;
+}
+
+.is-visible .reveal-up {
+    animation: reveal-up 800ms ease-out both;
+}
+
+.is-visible .reveal-left {
+    animation: reveal-left 800ms ease-out both;
+}
+
+.is-visible .reveal-right {
+    animation: reveal-right 800ms ease-out both;
+}
+
+.animate-soft-float {
+    animation: soft-float 4s ease-in-out infinite;
+}
+
+.animate-soft-scale {
+    animation: soft-scale 6s ease-in-out infinite;
+}
+
+.animate-sparkle {
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}

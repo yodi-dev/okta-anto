@@ -1,13 +1,13 @@
 <template>
-  <section id="rsvp-blessing" class="relative overflow-hidden bg-[#eee9df] px-6 py-20 text-[#4b483f]">
+  <section ref="rsvpRef" id="rsvp-blessing" class="relative overflow-hidden bg-[#eee9df] px-6 py-20 text-[#4b483f]">
     <!-- Soft decorative glow -->
     <div
-      class="pointer-events-none absolute right-0 top-20 h-80 w-80 translate-x-1/3 rounded-full bg-[#e8decb]/25 blur-3xl">
+      class="animate-soft-float pointer-events-none absolute right-0 top-20 h-80 w-80 translate-x-1/3 rounded-full bg-[#e8decb]/25 blur-3xl">
     </div>
 
     <div class="relative mx-auto max-w-2xl">
       <!-- Header -->
-      <div class="mb-12 text-center">
+      <div class="mb-12 text-center reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172] sm:text-sm">
           Your Presence Means A Lot
         </p>
@@ -19,7 +19,9 @@
         <!-- Ornament -->
         <div class="mt-5 flex items-center justify-center gap-3 text-[#b8aa92]">
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
-          <span class="text-xs">✦</span>
+
+          <span class="animate-sparkle text-xs">✦</span>
+
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
         </div>
 
@@ -31,10 +33,11 @@
 
       <!-- Form -->
       <div
-        class="rounded-[2rem] border border-[#d8cdbb] bg-[#f5f0e7]/80 p-6 shadow-[0_20px_60px_rgba(75,72,63,0.07)] backdrop-blur-sm sm:p-8">
+        class="rounded-[2rem] border border-[#d8cdbb] bg-[#f5f0e7]/80 p-6 shadow-[0_20px_60px_rgba(75,72,63,0.07)] backdrop-blur-sm reveal-up"
+        style="animation-delay: 180ms">
         <form @submit.prevent="submitForm" class="space-y-6">
           <!-- Name -->
-          <div>
+          <div class="reveal-up" style="animation-delay: 260ms">
             <label for="name"
               class="mb-2 block font-second text-xs font-semibold uppercase tracking-[0.15em] text-[#817769]">
               Nama
@@ -45,7 +48,7 @@
           </div>
 
           <!-- Attendance -->
-          <div>
+          <div class="reveal-up" style="animation-delay: 340ms">
             <label for="attending"
               class="mb-2 block font-second text-xs font-semibold uppercase tracking-[0.15em] text-[#817769]">
               Konfirmasi Kehadiran
@@ -68,7 +71,7 @@
           </div>
 
           <!-- Message -->
-          <div>
+          <div class="reveal-up" style="animation-delay: 420ms">
             <label for="message"
               class="mb-2 block font-second text-xs font-semibold uppercase tracking-[0.15em] text-[#817769]">
               Ucapan & Doa
@@ -81,8 +84,10 @@
 
           <!-- Submit -->
           <button type="submit"
-            class="inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#b8aa92] bg-[#e8decb] px-5 py-3 font-second text-sm font-semibold text-[#514d44] shadow-sm transition duration-300 hover:bg-[#ddd0ba] active:scale-[0.98]">
-            <img src="/icons/paper-plane-tilt-light.svg" alt="" class="size-4 opacity-75" />
+            class="group inline-flex w-full items-center justify-center gap-2 rounded-full border border-[#b8aa92] bg-[#e8decb] px-5 py-3 font-second text-sm font-semibold text-[#514d44] shadow-sm transition duration-300 hover:bg-[#ddd0ba] active:scale-[0.98] reveal-up"
+            style="animation-delay: 500ms">
+            <img src="/icons/paper-plane-tilt-light.svg" alt=""
+              class="size-4 opacity-75 transition-transform duration-300 group-hover:-translate-y-0.5" />
 
             <span>Kirim Ucapan</span>
           </button>
@@ -91,7 +96,7 @@
 
       <!-- Guestbook -->
       <div class="mt-14">
-        <div class="text-center">
+        <div class="text-center reveal-up" style="animation-delay: 620ms">
           <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172]">
             From Our Guests
           </p>
@@ -103,7 +108,8 @@
 
         <!-- Empty state -->
         <div v-if="entries.length === 0"
-          class="mt-8 rounded-[1.75rem] border border-dashed border-[#cfc4b1] bg-[#f5f0e7]/50 px-6 py-10 text-center">
+          class="mt-8 rounded-[1.75rem] border border-dashed border-[#cfc4b1] bg-[#f5f0e7]/50 px-6 py-10 text-center reveal-up"
+          style="animation-delay: 720ms">
           <p class="font-second text-sm italic text-[#8a8172]">
             Belum ada ucapan yang masuk.
           </p>
@@ -112,7 +118,8 @@
         <!-- Entries -->
         <ul v-else class="mt-8 space-y-4">
           <li v-for="(entry, index) in entries" :key="entry.id ?? index"
-            class="rounded-[1.5rem] border border-[#d8cdbb] bg-[#f5f0e7]/80 p-5 shadow-[0_10px_30px_rgba(75,72,63,0.05)] backdrop-blur-sm">
+            class="rounded-[1.5rem] border border-[#d8cdbb] bg-[#f5f0e7]/80 p-5 shadow-[0_10px_30px_rgba(75,72,63,0.05)] backdrop-blur-sm reveal-up"
+            :style="{ animationDelay: `${720 + index * 120}ms` }">
             <div class="flex items-start gap-4">
               <!-- Attendance icon -->
               <div
@@ -148,9 +155,11 @@
       </div>
 
       <!-- Bottom ornament -->
-      <div class="mt-12 flex items-center justify-center gap-3 text-[#b8aa92]">
+      <div class="mt-12 flex items-center justify-center gap-3 text-[#b8aa92] reveal-up" style="animation-delay: 900ms">
         <span class="h-px w-10 bg-[#cfc4b1]"></span>
-        <span class="text-[10px]">❧</span>
+
+        <span class="animate-sparkle text-[10px]">❧</span>
+
         <span class="h-px w-10 bg-[#cfc4b1]"></span>
       </div>
     </div>
@@ -168,6 +177,14 @@
 <script setup>
 import { ref, onMounted } from 'vue'
 import { supabase } from '@/utils/supabase'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
+
+const rsvpRef = ref(null)
+
+useRevealOnScroll(rsvpRef, {
+  threshold: 0.08,
+  once: true,
+})
 
 const form = ref({
   name: '',

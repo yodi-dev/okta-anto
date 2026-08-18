@@ -1,13 +1,13 @@
 <template>
-  <section id="event-detail" class="relative overflow-hidden bg-[#f5f0e7] px-6 py-20 text-[#4b483f]">
+  <section ref="eventRef" id="event-detail" class="relative overflow-hidden bg-[#f5f0e7] px-6 py-20 text-[#4b483f]">
     <!-- Soft decorative glow -->
     <div
-      class="pointer-events-none absolute left-0 top-16 h-72 w-72 -translate-x-1/3 rounded-full bg-[#e8decb]/25 blur-3xl">
+      class="animate-soft-float pointer-events-none absolute left-0 top-16 h-72 w-72 -translate-x-1/3 rounded-full bg-[#e8decb]/25 blur-3xl">
     </div>
 
     <div class="relative mx-auto max-w-5xl">
       <!-- Header -->
-      <div class="mb-12 text-center">
+      <div class="mb-12 text-center reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172] sm:text-sm">
           Our Special Day
         </p>
@@ -19,7 +19,9 @@
         <!-- Ornament -->
         <div class="mt-5 flex items-center justify-center gap-3 text-[#b8aa92]">
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
-          <span class="text-xs">✦</span>
+
+          <span class="animate-sparkle text-xs">✦</span>
+
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
         </div>
 
@@ -31,12 +33,12 @@
 
       <!-- Event Card -->
       <div
-        class="overflow-hidden rounded-[2rem] border border-[#d8cdbb] bg-[#eee9df]/80 shadow-[0_20px_60px_rgba(75,72,63,0.08)] backdrop-blur-sm"
-        data-aos="fade-up">
+        class="overflow-hidden rounded-[2rem] border border-[#d8cdbb] bg-[#eee9df]/80 shadow-[0_20px_60px_rgba(75,72,63,0.08)] backdrop-blur-sm reveal-up"
+        style="animation-delay: 180ms">
         <div class="grid md:grid-cols-2">
           <!-- Event Info -->
           <div class="p-7 sm:p-10 lg:p-12">
-            <div class="mb-8 text-center">
+            <div class="mb-8 text-center reveal-up" style="animation-delay: 260ms">
               <p class="font-second text-[10px] font-semibold uppercase tracking-[0.22em] text-[#9b907f]">
                 Wedding Ceremony
               </p>
@@ -47,7 +49,7 @@
             </div>
 
             <!-- Date -->
-            <div class="flex gap-4">
+            <div class="flex gap-4 reveal-up" style="animation-delay: 340ms">
               <div
                 class="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#d8cdbb] bg-[#e8decb]/70">
                 <img src="/icons/calendar-heart-light.svg" alt="" class="size-5 opacity-75" />
@@ -65,7 +67,7 @@
             </div>
 
             <!-- Time -->
-            <div class="mt-6 flex gap-4">
+            <div class="mt-6 flex gap-4 reveal-up" style="animation-delay: 420ms">
               <div
                 class="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#d8cdbb] bg-[#e8decb]/70">
                 <img src="/icons/clock-light.svg" alt="" class="size-5 opacity-75" />
@@ -83,7 +85,7 @@
             </div>
 
             <!-- Location -->
-            <div class="mt-6 flex gap-4">
+            <div class="mt-6 flex gap-4 reveal-up" style="animation-delay: 500ms">
               <div
                 class="flex size-10 shrink-0 items-center justify-center rounded-full border border-[#d8cdbb] bg-[#e8decb]/70">
                 <img src="/icons/map-pin-area-light.svg" alt="" class="size-5 opacity-75" />
@@ -101,15 +103,18 @@
             </div>
 
             <!-- Small ornament -->
-            <div class="mt-9 flex items-center justify-center gap-3 text-[#b8aa92]">
+            <div class="mt-9 flex items-center justify-center gap-3 text-[#b8aa92] reveal-up"
+              style="animation-delay: 580ms">
               <span class="h-px w-10 bg-[#cfc4b1]"></span>
-              <span class="text-[10px]">❧</span>
+
+              <span class="animate-sparkle text-[10px]">❧</span>
+
               <span class="h-px w-10 bg-[#cfc4b1]"></span>
             </div>
           </div>
 
           <!-- Map -->
-          <div class="min-h-[280px] bg-[#e8decb]/30 md:min-h-full">
+          <div class="min-h-[280px] bg-[#e8decb]/30 md:min-h-full reveal-right" style="animation-delay: 320ms">
             <div class="h-full w-full p-3 sm:p-4">
               <div
                 class="h-full min-h-[280px] overflow-hidden rounded-[1.5rem] border border-[#d8cdbb] bg-[#eee9df] shadow-sm">
@@ -125,3 +130,15 @@
     </div>
   </section>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
+
+const eventRef = ref(null)
+
+useRevealOnScroll(eventRef, {
+  threshold: 0.1,
+  once: true,
+})
+</script>

@@ -1,13 +1,13 @@
 <template>
-  <section id="love-story" class="relative overflow-hidden bg-[#eee9df] px-6 py-20 text-[#4b483f]">
+  <section ref="loveStoryRef" id="love-story" class="relative overflow-hidden bg-[#eee9df] px-6 py-20 text-[#4b483f]">
     <!-- Soft decorative glow -->
     <div
-      class="pointer-events-none absolute right-0 top-20 h-72 w-72 translate-x-1/3 rounded-full bg-[#e8decb]/20 blur-3xl">
+      class="animate-soft-float pointer-events-none absolute right-0 top-20 h-72 w-72 translate-x-1/3 rounded-full bg-[#e8decb]/20 blur-3xl">
     </div>
 
     <div class="relative mx-auto max-w-3xl">
       <!-- Header -->
-      <div class="mb-14 text-center">
+      <div class="mb-14 text-center reveal-up">
         <p class="font-second text-xs uppercase tracking-[0.3em] text-[#8a8172] sm:text-sm">
           Our Journey
         </p>
@@ -19,7 +19,9 @@
         <!-- Ornament -->
         <div class="mt-5 flex items-center justify-center gap-3 text-[#b8aa92]">
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
-          <span class="text-xs">✦</span>
+
+          <span class="animate-sparkle text-xs">✦</span>
+
           <span class="h-px w-12 bg-[#cfc4b1]"></span>
         </div>
 
@@ -37,20 +39,20 @@
         </div>
 
         <div class="space-y-8 sm:space-y-10">
-          <div v-for="(event, idx) in timeline" :key="idx" data-aos="fade-up" class="group relative pl-12 sm:pl-14">
+          <div v-for="(event, idx) in timeline" :key="idx" class="group relative pl-12 sm:pl-14 reveal-up"
+            :style="{ animationDelay: `${180 + idx * 140}ms` }">
             <!-- Timeline icon -->
             <div
               class="absolute left-0 top-1 z-10 flex size-8 items-center justify-center rounded-full border-2 border-[#f8f5ee] bg-[#e8decb] shadow-[0_4px_12px_rgba(75,72,63,0.12)] transition duration-300 group-hover:scale-110 sm:left-1 sm:size-9">
-              <img :src="event.icon" :alt="`Icon ${event.date}`"
-                class="size-4 object-contain opacity-75 sm:size-[18px]" />
+              <img :src="event.icon" alt="" class="size-4 object-contain opacity-75 sm:size-[18px]" />
             </div>
 
             <!-- Story card -->
             <article
               class="rounded-[1.5rem] border border-[#d8cdbb] bg-[#f5f0e7]/75 p-5 shadow-[0_10px_30px_rgba(75,72,63,0.06)] backdrop-blur-sm transition-all duration-300 group-hover:-translate-y-0.5 group-hover:shadow-[0_14px_35px_rgba(75,72,63,0.10)] sm:p-6">
-              <!-- Year + date -->
+              <!-- Year + title -->
               <div class="flex items-center gap-3">
-                <span class="font-heading text-md font-normal italic leading-none text-[#9b907f] sm:text-3xl">
+                <span class="font-heading text-2xl font-normal italic leading-none text-[#9b907f] sm:text-3xl">
                   {{ event.year }}
                 </span>
 
@@ -74,16 +76,14 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
-import AOS from 'aos'
-import 'aos/dist/aos.css'
+import { ref } from 'vue'
+import { useRevealOnScroll } from '~/composables/useRevealOnScroll'
 
-onMounted(() => {
-  AOS.init({
-    duration: 800,
-    once: true,
-    offset: 80,
-  })
+const loveStoryRef = ref(null)
+
+useRevealOnScroll(loveStoryRef, {
+  threshold: 0.1,
+  once: true,
 })
 
 const timeline = ref([
@@ -91,7 +91,7 @@ const timeline = ref([
     year: '2023',
     title: 'Pertemuan',
     description:
-      'Berawal dari perkenalan singkat melalui media sosial TikTok pada tahun 2023, kami memutuskan untuk bertemu secara langsung. Siapa sangka, pertemuan sederhana di Kedai Baper, Singkut, menjadi awal dari kisah cinta kami.',
+      'Percayalah, tidak ada yang kebetulan di dunia ini. Semua telah tersusun rapi oleh Sang Pencipta. Berawal dari perkenalan singkat melalui media sosial TikTok pada tahun 2023, kami memutuskan untuk bertemu secara langsung. Siapa sangka, pertemuan sederhana di Kedai Baper, Singkut, menjadi awal dari kisah cinta kami.',
     icon: '/icons/user-heart.svg',
   },
   {
@@ -105,7 +105,7 @@ const timeline = ref([
     year: '2026',
     title: 'Lamaran',
     description:
-      'Setelah menjalani hubungan yang tidak sebentar, atas kehendak-Nya serta restu dari orang tua dan keluarga, kami melangsungkan lamaran pada 8 Juli 2026. Sebuah langkah kecil yang menjadi awal menuju perjalanan yang lebih serius.',
+      'Setelah menjalani hubungan yang tidak sebentar, atas kehendak-Nya serta restu dari orang tua dan keluarga, kami melangsungkan lamaran pada 18 Juni 2026. Sebuah langkah kecil yang menjadi awal menuju perjalanan yang lebih serius.',
     icon: '/icons/rings.svg',
   },
   {

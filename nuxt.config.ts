@@ -15,6 +15,9 @@ export default defineNuxtConfig({
 		"@nuxt/eslint",
 		'@nuxtjs/google-fonts',
 	],
+	css: [
+    	'./assets/css/animation.css',
+	],
 	googleFonts: {
 		families: {
 		  'Great Vibes': [400],
