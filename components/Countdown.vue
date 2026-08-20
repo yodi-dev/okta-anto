@@ -1,5 +1,5 @@
 <template>
-  <section ref="countdownRef" class="relative h-screen w-full overflow-hidden bg-cover bg-no-repeat bg-[60%_10%]"
+  <section ref="countdownRef" class="relative h-screen w-full overflow-hidden bg-cover bg-no-repeat bg-[60%_40%]"
     style="background-image: url('/images/2.webp')">
     <!-- Soft dark overlay -->
     <div class="absolute inset-0 z-0 bg-gradient-to-b from-black/5 via-black/15 to-[#403c32]/85"></div>
