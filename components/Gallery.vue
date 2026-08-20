@@ -125,14 +125,14 @@ useRevealOnScroll(galleryRef, {
 const portraitImages = [
   { src: '/images/2.webp', alt: 'Potret Mempelai' },
   { src: '/images/3.webp', alt: 'Potret Mempelai' },
-  { src: '/images/pria.webp', alt: 'Potret Mempelai' },
-  { src: '/images/wanita.webp', alt: 'Potret Mempelai' },
   { src: '/images/5.webp', alt: 'Potret Mempelai' },
   { src: '/images/6.webp', alt: 'Potret Mempelai' },
-  { src: '/images/cover.webp', alt: 'Potret Mempelai' },
+  { src: '/images/10.webp', alt: 'Potret Mempelai' },
   { src: '/images/7.webp', alt: 'Potret Mempelai' },
-  { src: '/images/9.webp', alt: 'Potret Mempelai' },
   { src: '/images/8.webp', alt: 'Potret Mempelai' },
+  { src: '/images/9.webp', alt: 'Potret Mempelai' },
+  { src: '/images/11.webp', alt: 'Potret Mempelai' },
+  { src: '/images/12.webp', alt: 'Potret Mempelai' },
 ]
 
 const portraitSlides = []
@@ -155,6 +155,7 @@ const showLightboxFromPortrait = (index) => {
 const landscapeImages = [
   { src: '/images/1.webp', alt: 'Potret Mempelai' },
   { src: '/images/4.webp', alt: 'Potret Mempelai' },
+  { src: '/images/cover.webp', alt: 'Potret Mempelai' },
 ]
 
 const landscapeLightbox = ref({
