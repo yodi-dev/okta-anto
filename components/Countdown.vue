@@ -20,9 +20,9 @@
 
         <h1
           class="mt-4 font-heading text-5xl font-normal italic leading-none tracking-wide text-[#fffdf8] drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)] sm:text-6xl md:text-7xl">
-          Okta
-          <span class="mx-1 text-[#e8decb]">&</span>
           Anto
+          <span class="mx-1 text-[#e8decb]">&</span>
+          Okta
         </h1>
 
         <!-- Ornament -->

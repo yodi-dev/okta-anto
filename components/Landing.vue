@@ -21,9 +21,9 @@
         <!-- Couple names -->
         <h1
           class="mt-3 font-heading text-5xl font-normal italic leading-none tracking-wide text-[#fffdf8] drop-shadow-[0_2px_8px_rgba(0,0,0,0.18)] md:text-7xl">
-          Okta
-          <span class="mx-1 font-normal text-[#e8decb]">&</span>
           Anto
+          <span class="mx-1 font-normal text-[#e8decb]">&</span>
+          Okta
         </h1>
 
         <!-- Ornament -->

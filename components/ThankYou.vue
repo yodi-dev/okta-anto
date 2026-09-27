@@ -50,7 +50,7 @@
         </p>
 
         <h3 class="mt-2 font-heading text-3xl font-normal italic text-[#514d44] sm:text-4xl">
-          Okta & Anto
+          Anto & Okta
         </h3>
       </div>
 

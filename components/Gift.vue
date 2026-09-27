@@ -121,14 +121,14 @@ useRevealOnScroll(giftRef, {
 
 const banks = ref([
   {
-    name: 'Bank BNI',
-    account: '904054278',
-    owner: 'Sintia Oktarina',
+    name: 'Bank BSI',
+    account: '7264446109',
+    owner: 'Slamet Gianto',
   },
   {
     name: 'Dana',
-    account: '0821 8243 4538',
-    owner: 'Sintia Oktarina',
+    account: '0822 8482 4634',
+    owner: 'Slamet Gianto',
   },
 ])
 
