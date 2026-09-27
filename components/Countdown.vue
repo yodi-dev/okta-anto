@@ -35,7 +35,7 @@
         </div>
 
         <p class="mt-4 font-second text-sm tracking-wide text-[#f1eadf] sm:text-base md:text-lg">
-          Kamis, 17 September 2026
+          Jumat, 02 Oktober 2026
         </p>
       </div>
 
@@ -88,7 +88,7 @@ useRevealOnScroll(countdownRef, {
   once: true,
 })
 
-const target = new Date('2026-09-17T08:00:00+07:00').getTime()
+const target = new Date('2026-10-02T08:00:00+07:00').getTime()
 
 const days = ref(0)
 const hours = ref(0)
